@@ -1,0 +1,119 @@
+.text{
+    font-weight: bold;
+    font-size: 20px;
+}
+.button{
+    font-size: 14px;
+    font-weight: 550;
+}
+.text2{
+    font-weight: 150;
+    font-size: 15px;
+}
+.text3{
+    font-weight: 500;
+    font-size: 15px;
+    color: rgb(208, 58, 58);
+}
+.foot{
+    background-color: #F0F0F0;
+}
+.icon{
+    font-weight: 100;
+    margin-left: 10px;
+}
+.price{
+    margin-top: 4px;
+    font-size: 16px;
+    font-weight: 400;
+    margin-right: 15px;
+}
+
+.text4{
+    font-size: 15px;
+    font-weight: 550;
+}
+.seeall:hover{
+    cursor: pointer;
+    text-decoration: underline;
+    color: #5cb85c;
+}
+.divCard:hover{
+    background-color: #F0F0F0;
+    cursor: pointer;
+}
+.cardImg{
+    background-image: url("https://myteam11main.s3.ap-south-1.amazonaws.com/images/static/cricket_live_fantasy_bg.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    width: 82%;
+    height: 100%;
+    color: white;
+    font-weight: bold;
+}
+.divHeight{
+    height: max-content;
+    margin-right: 30px;
+    margin-left: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.divHeightWK{
+    height: 150px;
+}
+.text5{
+    font-weight: 500;
+}
+.image3{
+    height: 75px;
+    width: 75px;
+    /* margin-left: px; */
+    /* margin-right:5px ; */
+}
+.pName{
+    font-size: 10px;
+    text-align: center;
+    margin-top: 2px;
+}
+.black{
+    background-color: black;
+    padding: 2px;
+    border-radius:10px ;
+  }
+  .white{
+    background-color:white;
+    color: black;
+    padding: 2px;
+    border-radius:10px ;
+  }
+.scroll {
+    max-height: 685px;
+    overflow-y: auto;
+}
+.scroll2 {
+    max-height: 660px;
+    overflow-y: auto;
+}
+.cName{
+    margin-top: -10px;
+    font-size: 11px;
+}
+.pointer {cursor: pointer;}
+
+.price{
+    margin-top: 4px;
+    font-size: 16px;
+    font-weight: 400;
+    margin-right: 15px;
+}
+
+.text4{
+    font-size: 15px;
+    font-weight: 550;
+}
+.image{
+    height: 40px;
+    width: 40px;
+    border-radius: 30px;
+}

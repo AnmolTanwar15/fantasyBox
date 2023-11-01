@@ -1,0 +1,48 @@
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h2 align="center">REGISTRATION FORM</h2>
+                    <h4 align="center">Already Have An Account <a href="" [routerLink]="''">login?</a></h4>
+                    <form action="" [formGroup]="regiForm">
+                        <mat-form-field appearance="outline" [style.width]="'100%'" class="mt-3">
+                            <mat-label>Email</mat-label>
+                            <input type="text" matInput formControlName="email">
+                            <mat-hint [style.color]="'red'" *ngIf="f['email'].touched && f['email'].errors?.['required']">! Email Required</mat-hint>
+                            <mat-hint class="hint" [style.color]="'red'" *ngIf="f['email'].touched && f['email'].errors?.['pattern']">! Invalid Email </mat-hint>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" [style.width]="'100%'" class="mt-3">
+                            <mat-label>Mobile</mat-label>
+                            <input type="text" matInput formControlName="mob" (keypress)="keyPressNumbers($event)" maxlength="10">
+                            <mat-hint [style.color]="'red'" *ngIf="f['mob'].touched && f['mob'].errors?.['required']">! Mobile Required</mat-hint>
+                            <mat-hint class="hint" [style.color]="'red'" *ngIf="f['mob'].touched && f['mob'].errors?.['pattern']">! Invalid Mobile Number</mat-hint>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" [style.width]="'100%'" class="mt-3">
+                            <mat-label>Password</mat-label>
+                            <input [type]="showPassword ? 'text' : 'password'" matInput formControlName="password1">
+                            <mat-icon matSuffix (click)="togglePasswordVisibility('password1')">{{showPassword?'visibility_off':'visibility'}}</mat-icon>
+                            <mat-hint [style.color]="'red'" *ngIf="f['password1'].touched && f['password1'].errors?.['required']">! Password Required</mat-hint>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" [style.width]="'100%'" class="mt-3">
+                            <mat-label>Confirm Password</mat-label>
+                            <input [type]="showPassword2 ? 'text' : 'password'" matInput formControlName="password">
+                            <mat-icon matSuffix (click)="togglePasswordVisibility('password')">{{showPassword2?'visibility_off':'visibility'}}</mat-icon>
+                            <mat-hint [style.color]="'red'" *ngIf="f['password'].touched && f['password'].errors?.['required']">! Password Required</mat-hint>
+                            <mat-hint [style.color]="'red'" *ngIf="f['password'].errors?.['confirmedValidator'] && f['password'].touched">! Password Does Not Match</mat-hint>
+                        </mat-form-field>
+                        <button mat-raised-button color="primary" class="mt-3" (click)="onSubmit()">Submit</button>
+                    </form>
+                    <div class="mt-3" [style.textAlign]="'center'" *ngIf="otpForm">
+                        <!-- <form action="" [formGroup]="OTP"> -->
+                            <h2>OTP</h2>
+                            <ng-otp-input [config]="{length:4}" (onInputChange)="onOtpChange($event)" (keypress)="keyPressNumbers($event)"></ng-otp-input>
+                            <!-- <div [style.color]="'red'" *ngIf="f2['otp'].touched && f2['otp'].errors?.['required']">! OTP Required</div> -->
+                            <button mat-raised-button color="primary" class="mt-3" (click)="onSubmitOTP()">Submit OTP</button>
+                        <!-- </form> -->
+                    </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,117 @@
+<nav class="navbar bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" [routerLink]="'/home'" [style.color]="'white'">Navbar</a>
+      <button mat-mini-fab color="primary"  type="submit" class="ms-2" (click)="onLogout()"><mat-icon>logout</mat-icon></button>
+    </div>
+  </nav>
+
+  <div class="container mt-2" >
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h2 class="text-center">Choose Captain & Vice Captain</h2>
+                    <p class="text-center">C Get 2X Points and VC Get 1.5X Points</p>
+                    <div class=" scroll">                      
+                    <table class="table mt-2">
+                        <thead class="table-secondary" >
+                            <tr>
+                                <th>Player</th>
+                                <th>Team</th>
+                                <th>PTS</th>
+                                <th class="text-center">%C BY</th>
+                                <th class="text-center">%VC BY</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let d of allPlayers; index as i">
+                                <td><small><span mat-raised-button class="MEGA">{{d.teamname}}</span></small>
+                                    <img src={{d.image}} class="img-fluid image2" alt=""></td>
+                                    <td class="text">
+                                        {{d.name}}
+                                            <li *ngIf="d.playingstatus==0" class="avail">Not Available</li>
+                                            <li *ngIf="d.playingstatus==1" class="avail">Available</li>
+                                            <li *ngIf="d.playingstatus==-1" class="avail">In Last Playing</li>
+                                    </td>
+                                    <td>{{d.points}}</td>
+                                    <td class="text-center">
+                                        <div class="boxed" id="cap">
+                                            <input type="radio" [checked]="d.Active1" id="C{{i}}" name="C" value="C">
+                                            <label for="C{{i}}" (click)="onLableCaptain(d.id,d.role,i)">C</label>
+                                        </div>
+                                        <small class="percent">{{d.captain_selection_percentage}}%</small>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="boxed" id="vice">
+                                            <input type="radio" [checked]="d.Active2" id="VC{{i}}" name="VC" value="VC">
+                                            <label for="VC{{i}}" (click)="onLableVice(d.id,d.role,i)">VC</label>
+                                        </div>
+                                        <small class="percent">{{d.vice_captain_selection_percentage}}%</small>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div style="margin:auto;position: sticky;bottom: 0;z-index: 1;">
+                    <button mat-raised-button color="warn" class="mb-1" (click)="previous()">PREVIOUS MENU</button>
+                    <button mat-raised-button color="primary" class="ms-2 me-4 mb-1" (click)="createTeam()" [disabled]="buttonCap.length<1 || buttonVice.length<1">CREATE TEAM</button>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card cardImg cardSide scroll2">
+                <div class="card-body">
+                    <div class="">
+                        <div class="divHeight">                            
+                            <h4 align="center" class="text5 mt-2">Wicket Keeper</h4>
+                            <div class="d-flex justify-content-around flex-wrap">
+                                <div *ngFor="let d of wk;index as i">
+                                    <div [matBadge]="d.Active1 ? 'C'  :d.Active2 ? 'VC':''" matBadgeOverlap="true" matBadgePosition="before" class="demo-section"></div>
+                                    <img src={{d.image}} class="img-fluid image3 rounded-circle" alt="">
+                                    <p class="pName" [ngClass]="{'black': d.team =='team1', 'white': d.team =='team2'}">{{d.name}}</p>
+                                    <p align="center" class="cName">{{d.credit}} Cr</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="divHeight">
+                            <h4 align="center" class="text5">Batter</h4>
+                            <div class="d-flex justify-content-around flex-wrap">
+                                <div *ngFor="let d of bat;index as i">
+                                    <div [matBadge]="d.Active1 ? 'C'  :d.Active2 ? 'VC':''" matBadgeOverlap="true" matBadgePosition="before" class="demo-section"></div>
+                                    <img src={{d.image}} class="img-fluid image3 rounded-circle" alt="">
+                                    <p class="pName" [ngClass]="{'black': d.team =='team1', 'white': d.team =='team2'}">{{d.name}}</p>
+                                    <p align="center" class="cName">{{d.credit}} Cr</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="divHeight">
+                            <h4 align="center" class="text5 mt-2">All Rounder</h4>
+                            <div class="d-flex justify-content-around flex-wrap">
+                                <div *ngFor="let d of ar;index as i">
+                                    <div [matBadge]="d.Active1 ? 'C'  :d.Active2 ? 'VC':''" matBadgeOverlap="true" matBadgePosition="before" class="demo-section"></div>
+                                    <img src={{d.image}} class="img-fluid image3 rounded-circle" alt="">
+                                    <p class="pName" [ngClass]="{'black': d.team =='team1', 'white': d.team =='team2'}">{{d.name}}</p>
+                                    <p align="center" class="cName">{{d.credit}} Cr</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="divHeight">
+                            <h4 align="center" class="text5 mt-2">Bowler</h4>
+                            <div class="d-flex justify-content-around flex-wrap">
+                                <div *ngFor="let d of bow;index as i">
+                                    <div [matBadge]="d.Active1 ? 'C'  :d.Active2 ? 'VC':''" matBadgeOverlap="true" matBadgePosition="before" class="demo-section"></div>
+                                    <img src={{d.image}} class="img-fluid image3 rounded-circle" alt="">
+                                    <p class="pName" [ngClass]="{'black': d.team =='team1', 'white': d.team =='team2'}">{{d.name}}</p>
+                                    <p align="center" class="cName">{{d.credit}} Cr</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+    </div>
+  </div>
+
+  <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "timer" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>

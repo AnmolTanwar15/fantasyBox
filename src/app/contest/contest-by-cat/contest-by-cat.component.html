@@ -1,0 +1,63 @@
+<nav class="navbar bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" [routerLink]="'/home'" [style.color]="'white'">Navbar</a>
+        <button class="btn btn-success" type="submit" (click)="onLogout()">LOG OUT</button>
+    </div>
+  </nav>
+ 
+
+<div class="container-fluid mt-4">
+  <div class="row">
+        
+    <div class="col-md-4"  *ngFor="let d of data;index as i">
+        <div *ngIf="i==0"><h1 style="font-weight: bold;">{{d.name}}</h1></div>
+        <div *ngIf="i==1"><h1>&nbsp;</h1></div>
+        <div *ngIf="i==2"><h2 >&nbsp;</h2></div>       
+         <mat-card class="mb-4" style="cursor: pointer;"  (click)="onCard(d.id)">
+            <mat-card-content>
+                <div class="d-flex justify-content-between">
+                    <div class="text4">Prize Pool</div>
+                    <div class="text4">Entry</div>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <div class="text mt-2">₹{{d.win_amount}}</div>
+                    <div><button mat-raised-button color="accent" class="button" (click)="onJoin(d.id)" onclick="event.stopPropagation()">₹{{d.entryfee}}</button></div>
+                </div>
+                <div class="mt-3" >
+                    <mat-progress-bar mode="determinate" color="warn" value={{100-d.value}}></mat-progress-bar>                    
+                </div>
+                <div class="d-flex justify-content-between mt-2">
+                    <div class="text3">{{d.maximum_user - d.joinedusers}} spots left</div>
+                    <div class="text2">{{d.maximum_user}} spots</div>
+                </div>
+            </mat-card-content>
+            <mat-card-footer class="foot mt-2">
+                <div class="d-flex justify-content-between mt-2">
+                    <div class="d-flex">
+                        <mat-icon class="icon"> military_tech </mat-icon>
+                        <p class="price"> ₹{{d.price_card[0].price}}</p>
+                        <mat-icon class="icon">emoji_events</mat-icon>
+                        <p class="price">{{d.winning_percentage}}%</p>
+                        <mat-icon class="icon">stars</mat-icon>
+                        <p class="price"> Upto {{d.team_limit}}</p>
+                    </div>
+                    <div class="d-flex">
+                        <mat-icon class="icon">verified</mat-icon>
+                        <p class="price">Guaranteed</p>
+                    </div>
+                </div>
+            </mat-card-footer>
+        </mat-card>
+    </div>
+</div>
+</div>
+
+<nav class="navbar fixed-bottom" style="z-index: 2;">
+    <div class="container-fluid justify-content-center">
+      <button mat-raised-button color="warn" class="me-2" *ngIf="myAllTeam.length>0" (click)="myTeam()">MY TEAMS ({{myAllTeam.length}})</button>
+      <button mat-raised-button color="primary" class="ms-2" (click)="onCreateTeam()">CREATE TEAM</button>
+    </div>
+</nav>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "timer" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>

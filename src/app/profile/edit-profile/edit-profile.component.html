@@ -1,0 +1,105 @@
+<nav class="navbar navbar-expand-lg bg-primary">
+    <div class="container-fluid">
+        <div class="d-flex">
+            <mat-icon class="icon" [routerLink]="'/profile'" >arrow_back</mat-icon>
+            <div class="navbar-brand ms-3"  [style.color]="'white'">Edit Profile</div>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <mat-card>
+                <mat-card-content>
+                    <form action="" [formGroup]="editForm">
+                        <mat-form-field appearance="outline" class="formField">
+                            <mat-label>Team Name</mat-label>
+                            <input type="text" matInput formControlName="t_name" readonly>
+                            <mat-error *ngIf="f['t_name'].touched && f['t_name'].errors?.['required']">*Team Name Required</mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="formField mt-2">
+                            <mat-label>Your Name</mat-label>
+                            <input type="text" matInput formControlName="y_name">
+                            <mat-error *ngIf="f['y_name'].touched && f['y_name'].errors?.['required']">*Your Name Required</mat-error>
+                        </mat-form-field>
+                        <div class="formField mb-3">
+                            <label for="startDate">Date Of Birth</label>
+                            <input id="startDate" class="form-control" type="date" formControlName="date" max="2005-01-01" (keydown)="onKey($event)" readonly>
+                        </div>
+                          <mat-label id="gender" class=" mt-4" >Gender</mat-label> <br>
+                          <mat-radio-group color="primary"  aria-labelledby="example-radio-group-label" class="mb-3" formControlName="gender">
+                            <mat-radio-button value="Male">Male</mat-radio-button>
+                            <mat-radio-button value="Female">Female</mat-radio-button>
+                            <mat-radio-button value="Other">Other</mat-radio-button>
+                          </mat-radio-group> 
+                          <mat-error *ngIf="f['gender'].touched && f['gender'].errors?.['required']">*Gender Required</mat-error>
+                          <mat-form-field appearance="outline" class="formField mt-3">
+                            <mat-label>Email Address</mat-label>
+                            <input type="email" matInput formControlName="email" readonly>
+                            <mat-error *ngIf="f['email'].touched && f['email'].errors?.['required']">*Email Required</mat-error>
+                        </mat-form-field>     
+                        <mat-form-field appearance="outline" class="formField mt-2">
+                            <mat-label>Phone Number</mat-label>
+                            <input type="number" matInput formControlName="mob" readonly>
+                            <mat-error *ngIf="f['mob'].touched && f['mob'].errors?.['required']">*Phone Number Required</mat-error>
+                        </mat-form-field>      
+                        <mat-form-field appearance="outline" class="formField mt-2">
+                            <mat-label>Your address</mat-label>
+                            <input type="text" matInput formControlName="address">
+                            <mat-error *ngIf="f['address'].touched && f['address'].errors?.['required']">*Address Required</mat-error>
+                        </mat-form-field>    
+                        <mat-form-field class="mt-3" appearance="outline" class="formField mt-2 readonly-wrapper" >
+                            <mat-label>Select State</mat-label>
+                            <mat-select formControlName="state" class="readonly-block">
+                                <mat-option _ngcontent-c11="" disabled>select</mat-option>
+                                <mat-option _ngcontent-c11="" value="PONDICHERRY" disabled>PONDICHERRY</mat-option>
+                                <mat-option _ngcontent-c11="" value="BIHAR" disabled>BIHAR</mat-option>
+                                <mat-option _ngcontent-c11="" value="CHHATTISGARH" disabled>CHHATTISGARH</mat-option>
+                                <mat-option _ngcontent-c11="" value="DELHI" disabled>DELHI</mat-option>
+                                <mat-option _ngcontent-c11="" value="GUJARAT" disabled>GUJARAT</mat-option>
+                                <mat-option _ngcontent-c11="" value="DAMAN &amp; DIU" disabled>DAMAN &amp; DIU</mat-option>
+                                <mat-option _ngcontent-c11="" value="DADRA &amp; NAGAR HAVELI" disabled>DADRA &amp; NAGAR HAVELI</mat-option>
+                                <mat-option _ngcontent-c11="" value="HARYANA" disabled>HARYANA</mat-option>
+                                <mat-option _ngcontent-c11="" value="HIMACHAL PRADESH" disabled>HIMACHAL PRADESH</mat-option>
+                                <mat-option _ngcontent-c11="" value="JAMMU &amp; KASHMIR" disabled>JAMMU &amp; KASHMIR</mat-option>
+                                <mat-option _ngcontent-c11="" value="JHARKHAND" disabled>JHARKHAND</mat-option>
+                                <mat-option _ngcontent-c11="" value="KARNATAKA" disabled>KARNATAKA</mat-option>
+                                <mat-option _ngcontent-c11="" value="KERALA" disabled>KERALA</mat-option>
+                                <mat-option _ngcontent-c11="" value="LAKSHADWEEP" disabled>LAKSHADWEEP</mat-option>
+                                <mat-option _ngcontent-c11="" value="MADHYA PRADESH" disabled>MADHYA PRADESH</mat-option>
+                                <mat-option _ngcontent-c11="" value="MAHARASHTRA" disabled>MAHARASHTRA</mat-option>
+                                <mat-option _ngcontent-c11="" value="GOA" disabled>GOA</mat-option>
+                                <mat-option _ngcontent-c11="" value="MANIPUR" disabled>MANIPUR</mat-option>
+                                <mat-option _ngcontent-c11="" value="MIZORAM" disabled>MIZORAM</mat-option>
+                                <mat-option _ngcontent-c11="" value="TRIPURA" disabled>TRIPURA</mat-option>
+                                <mat-option _ngcontent-c11="" value="ARUNACHAL PRADESH" disabled>ARUNACHAL PRADESH</mat-option>
+                                <mat-option _ngcontent-c11="" value="MEGHALAYA" disabled>MEGHALAYA</mat-option>
+                                <mat-option _ngcontent-c11="" value="PUNJAB" disabled>PUNJAB</mat-option>
+                                <mat-option _ngcontent-c11="" value="CHANDIGARH" disabled>CHANDIGARH</mat-option>
+                                <mat-option _ngcontent-c11="" value="RAJASTHAN" disabled>RAJASTHAN</mat-option>
+                                <mat-option _ngcontent-c11="" value="TAMIL NADU" disabled>TAMIL NADU</mat-option>
+                                <mat-option _ngcontent-c11="" value="UTTAR PRADESH" disabled>UTTAR PRADESH</mat-option>
+                                <mat-option _ngcontent-c11="" value="UTTARAKHAND" disabled>UTTARAKHAND</mat-option>
+                                <mat-option _ngcontent-c11="" value="WEST BENGAL" disabled>WEST BENGAL</mat-option>
+                                <mat-option _ngcontent-c11="" value="ANDAMAN &amp; NICOBAR ISLANDS" disabled>ANDAMAN &amp; NICOBAR ISLANDS</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="f['state'].touched && f['state'].errors?.['required']">*State Name Required</mat-error>
+                        </mat-form-field>     
+                        <mat-form-field appearance="outline" class="formField mt-2">
+                            <mat-label>Pin Code</mat-label>
+                            <input type="text" matInput formControlName="pin" (keypress)="keyPressNumbers($event)">
+                            <mat-error *ngIf="f['pin'].touched && f['pin'].errors?.['required']">*Pincode Required</mat-error>
+                        </mat-form-field>
+                    </form>
+                </mat-card-content>
+                <mat-card-footer>
+                    <button style="width:100%;display:block;" color="primary" mat-raised-button (click)="onSubmit()">UPDATE PROFILE</button>
+                </mat-card-footer>
+              </mat-card>              
+        </div>
+    </div>
+</div>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "timer" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>

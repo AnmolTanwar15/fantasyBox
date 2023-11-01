@@ -1,0 +1,136 @@
+<nav class="navbar fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" [routerLink]="'/home'" [style.color]="'white'">Navbar</a>
+      <div class="d-flex">
+        <button mat-mini-fab color="warn" class="me-2" [routerLink]="'/notifications'"><mat-icon>notifications</mat-icon></button>
+        <button mat-mini-fab color="primary"  type="submit" class="ms-2" (click)="onLogout()"><mat-icon>logout</mat-icon></button>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="container" style=" padding-top:50px; padding-bottom: 80px;">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mt-3">
+                <div class="card-body">
+                    <mat-tab-group class="scroll">
+                        <mat-tab label="Upcoming">
+                            <div class="card divCard mt-2 mb-2" *ngFor="let d of upcoming; let i =index" (click)="onCard(d.matchkey,'Up')">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="text">{{d.name}}</div>
+                                        <div class="text">{{d.type}}</div>
+                                    </div>
+                                    <hr>
+                                    <div class="d-flex justify-content-between">
+                                        <h5>{{d.team1fullname}}</h5>
+                                        <h5>{{d.team2fullname}}</h5>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="text"><img src={{d.team1logo}} class="img-fluid image" alt="">{{d.team1display}}</div>
+                                        <cd-timer style="color:#8B0000;font-weight:600" [countdown]="true" [startTime]="finalDate1[i]" *ngIf="finalDate1[i]>0"  [format]="'user'">[days]D : [hours]H : [minutes]M : [seconds]s</cd-timer>
+                                        <div style="color:#8B0000;font-weight:600" *ngIf="finalDate1[i]<0">Completed</div>
+                                        <div class="text">{{d.team2display}}<img src={{d.team2logo}} class="img-fluid image" alt=""></div>
+                                    </div>
+                                    <hr>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="text">₹{{d.maximum_winning_amount}}</div>
+                                        <mat-card-footer>
+                                            <small><span mat-raised-button class="MEGA">MEGA</span></small>
+                                        </mat-card-footer>
+                                    </div>
+                                </div>
+                              </div>
+                        </mat-tab>
+                        <mat-tab label="Live">
+                            <div class="card divCard mt-2 mb-2" *ngFor="let d of live; let i =index" (click)="onCard(d.matchkey,'Li')">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="text">{{d.name}}</div>
+                                        <div class="text">{{d.type}}</div>
+                                    </div>
+                                    <hr>
+                                    <div class="d-flex justify-content-between">
+                                        <h5>{{d.team1fullname}}</h5>
+                                        <h5>{{d.team2fullname}}</h5>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="text"><img src={{d.team1logo}} class="img-fluid image" alt="">{{d.team1display}}</div>
+                                        <!-- <cd-timer style="color:#8B0000;font-weight:600" [countdown]="true" [startTime]="finalDate2[i]" *ngIf="finalDate2[i]>0"  [format]="'user'">[days]D : [hours]H : [minutes]M : [seconds]s</cd-timer> -->
+                                        <div style="color:green;font-weight:600"> <span class="blink">•</span>Live</div>
+                                        <div class="text">{{d.team2display}}<img src={{d.team2logo}} class="img-fluid image" alt=""></div>
+                                    </div>
+                                    <hr>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="text">₹{{d.maximum_winning_amount}}</div>
+                                        <mat-card-footer>
+                                            <small><span mat-raised-button class="MEGA">MEGA</span></small>
+                                        </mat-card-footer>
+                                    </div>
+                                </div>
+                              </div>
+                        </mat-tab>
+                        <mat-tab label="Completed">
+                            <div class="card divCard mt-2 mb-2" *ngFor="let d of completed; let i =index" (click)="onCard(d.matchkey,'Co')">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="text">{{d.name}}</div>
+                                        <div class="text">{{d.type}}</div>
+                                    </div>
+                                    <hr>
+                                    <div class="d-flex justify-content-between">
+                                        <h5>{{d.team1fullname}}</h5>
+                                        <h5>{{d.team2fullname}}</h5>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="text"><img src={{d.team1logo}} class="img-fluid image" alt="">{{d.team1display}}</div>
+                                        <!-- <cd-timer style="color:#8B0000;font-weight:600" [countdown]="true" [startTime]="finalDate3[i]" *ngIf="finalDate3[i]>0"  [format]="'user'">[days]D : [hours]H : [minutes]M : [seconds]s</cd-timer> -->
+                                        <div style="color:#8B0000;font-weight:600">Completed</div>
+                                        <div class="text">{{d.team2display}}<img src={{d.team2logo}} class="img-fluid image" alt=""></div>
+                                    </div>
+                                    <hr>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="text">₹{{d.maximum_winning_amount}}</div>
+                                        <mat-card-footer>
+                                            <small><span mat-raised-button class="MEGA">MEGA</span></small>
+                                        </mat-card-footer>
+                                    </div>
+                                </div>
+                              </div>
+                        </mat-tab>
+                      </mat-tab-group>                     
+                </div>
+              </div>
+        </div>
+    </div>
+  </div>
+
+
+
+  <nav class="navbar fixed-bottom bg-light">
+    <div class="container-fluid justify-content-between">
+        <mat-card class="matCard-footer" [routerLink]="'/home'">
+            <mat-card-content>
+                <mat-icon class="footer">home</mat-icon>
+            </mat-card-content>
+        </mat-card>          
+        <mat-card class="matCard-footer">
+          <mat-card-content>
+                <mat-icon class="footer" [routerLink]="'/joined-contest'">local_activity</mat-icon>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="matCard-footer">
+            <mat-card-content>
+                <mat-icon class="footer" [routerLink]="'/wallet'">account_balance_wallet</mat-icon>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="matCard-footer">
+            <mat-card-content>
+                <mat-icon class="footer">more_vert</mat-icon>
+            </mat-card-content>
+        </mat-card>
+    </div>
+  </nav>
+
+  <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "timer" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>

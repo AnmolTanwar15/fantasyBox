@@ -1,0 +1,132 @@
+<nav class="navbar bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" [routerLink]="'/home'" [style.color]="'white'">Navbar</a>
+      <button mat-mini-fab color="primary"  type="submit" class="ms-2" (click)="onLogout()"><mat-icon>logout</mat-icon></button>
+    </div>
+</nav>
+
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card scroll" style="height: 668px;">
+                <div class="card-body" *ngFor="let p of teams;let i = index">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <h2>TEAM {{p.teamnumber}}</h2>
+                                </div>
+                                <div>
+                                    <mat-icon (click)="onHome()" class="pointer" *ngIf="i==0">home</mat-icon>
+                                    <mat-icon (click)="onViewTeam(p)" class="ms-3 pointer">remove_red_eye</mat-icon>
+                                    <mat-icon class="ms-3 pointer" (click)="onEdit(p)">edit</mat-icon>
+                                    <mat-icon class="ms-3 pointer" (click)="onClone(p)">file_copy</mat-icon>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="d-flex ms-2 mt-2 justify-content-around">
+                                    <div class="d-flex justify-content-between">
+                                        <div *ngFor="let d of p.player;let j = index">
+                                            <div  [matBadge]="d.captain == 1 ? 'C':d.vicecaptain == 1 ? 'VC':''" matBadgeOverlap="true" matBadgePosition="before" class="demo-section"></div>
+                                          <div>
+                                            <div class="justify-content-center" *ngIf="d.captain == 1">
+                                                <img src={{d.image}} class=" image1" alt="">
+                                                <div class="p1Name ms-3" >{{d.name}}</div>
+                                            </div>
+                                            <div class="justify-content-center" *ngIf="d.vicecaptain == 1">
+                                                <img src={{d.image}} class=" image2 " alt="">
+                                                <div class="p1Name ms-3" >{{d.name}}</div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                    </div>
+                                    <div class="me-2 mt-2 ms-2" style="width:45%">
+                                        <table class="table table-dark table-striped-columns" >
+                                            <thead>              
+                                                <tr class="table-secondary text-center">
+                                                    <th>{{team1_name}}</th>
+                                                    <td>{{newData[i].t1.length}}</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="table-secondary text-center">
+                                                    <th>{{team2_name}}</th>
+                                                    <td>{{newData[i].t2.length}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="d-flex justify-content-between mt-3">
+                                    <h3 class="head ms-3">WK - {{newData[i].wk.length}}</h3>
+                                    <h3 class="head">BAT - {{newData[i].bat.length}}</h3>
+                                    <h3 class="head">AR - {{newData[i].ar.length}}</h3>
+                                    <h3 class="head me-3">BOWL - {{newData[i].bow.length}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+                <div style="margin:auto;position: sticky;bottom: 0;z-index: 1;">
+                    <button mat-raised-button color="primary" class="mb-1" (click)="onCreateNew()" [disabled]="teams.teamnumber>10">CREATE NEW TEAM</button>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-6" *ngIf="showGrass">
+            <div class="card cardImg cardSide scroll2">
+                <div class="card-body">
+                    <div class="">
+                        <div class="divHeight">                            
+                            <h4 align="center" class="text5 mt-2">Wicket Keeper</h4>
+                            <div class="d-flex justify-content-around flex-wrap">
+                                <div *ngFor="let d of keeper;index as i">
+                                    <div [matBadge]="d.captain == 1 ? 'C'  :d.vicecaptain == 1 ? 'VC':''" matBadgeOverlap="true" matBadgePosition="before" class="demo-section"></div>
+                                    <img src={{d.image}} class="img-fluid image3 rounded-circle" alt="">
+                                    <p class="pName" [ngClass]="{'black': d.team =='team1', 'white': d.team =='team2'}">{{d.name}}</p>
+                                    <p align="center" class="cName">{{d.credit}} Cr</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="divHeight">
+                            <h4 align="center" class="text5">Batter</h4>
+                            <div class="d-flex justify-content-around flex-wrap">
+                                <div *ngFor="let d of batsman;index as i">
+                                    <div [matBadge]="d.captain == 1 ? 'C'  :d.vicecaptain == 1 ? 'VC':''" matBadgeOverlap="true" matBadgePosition="before" class="demo-section"></div>
+                                    <img src={{d.image}} class="img-fluid image3 rounded-circle" alt="">
+                                    <p class="pName" [ngClass]="{'black': d.team =='team1', 'white': d.team =='team2'}">{{d.name}}</p>
+                                    <p align="center" class="cName">{{d.credit}} Cr</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="divHeight">
+                            <h4 align="center" class="text5 mt-2">All Rounder</h4>
+                            <div class="d-flex justify-content-around flex-wrap">
+                                <div *ngFor="let d of allrounder;index as i">
+                                    <div [matBadge]="d.captain == 1 ? 'C'  :d.vicecaptain == 1 ? 'VC':''" matBadgeOverlap="true" matBadgePosition="before" class="demo-section"></div>
+                                    <img src={{d.image}} class="img-fluid image3 rounded-circle" alt="">
+                                    <p class="pName" [ngClass]="{'black': d.team =='team1', 'white': d.team =='team2'}">{{d.name}}</p>
+                                    <p align="center" class="cName">{{d.credit}} Cr</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="divHeight">
+                            <h4 align="center" class="text5 mt-2">Bowler</h4>
+                            <div class="d-flex justify-content-around flex-wrap">
+                                <div *ngFor="let d of bowler;index as i">
+                                    <div [matBadge]="d.captain == 1 ? 'C'  :d.vicecaptain == 1 ? 'VC':''" matBadgeOverlap="true" matBadgePosition="before" class="demo-section"></div>
+                                    <img src={{d.image}} class="img-fluid image3 rounded-circle" alt="">
+                                    <p class="pName" [ngClass]="{'black': d.team =='team1', 'white': d.team =='team2'}">{{d.name}}</p>
+                                    <p align="center" class="cName">{{d.credit}} Cr</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</div>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "timer" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>

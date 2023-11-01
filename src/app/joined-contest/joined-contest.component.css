@@ -1,0 +1,50 @@
+.footer{
+    font-size: 35px;
+    height: 30px ;
+    width: 40px ;
+    margin-left: 5px;
+}
+.matCard-footer:hover{
+    background-color: aqua;
+    cursor: pointer;
+}
+.text{
+    font-weight: bold;
+}
+.image{
+    height: 30px;
+    width: 30px;
+    margin-left: 5px;
+    margin-right:5px ;
+}
+.MEGA{
+    font-size: 12px;
+    padding:2px;
+    margin:5px;
+   color: rgb(10, 231, 10);
+    border: 1px solid rgb(10, 231, 10);
+}
+.divCard:hover{
+    background-color: #F0F0F0;
+    cursor: pointer;
+}
+.scroll {
+    max-height: 562px;
+    overflow-y: auto;
+}
+.blink {
+    animation: blink 1s steps(1, end) infinite;
+    font-size: 30px;
+  }
+  
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }

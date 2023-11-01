@@ -1,0 +1,148 @@
+<nav class="navbar fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" [routerLink]="'/home'" [style.color]="'white'">Navbar</a>
+      <div class="d-flex">
+        <button mat-mini-fab color="warn" class="me-2" [routerLink]="'/notifications'"><mat-icon>notifications</mat-icon></button>
+        <button mat-mini-fab color="primary"  type="submit" class="ms-2" (click)="onLogout()"><mat-icon>logout</mat-icon></button>
+      </div>
+    </div>
+  </nav>
+
+
+<div class="container" style=" padding-top:50px; padding-bottom: 90px;">
+    <div class="row justify-content-center" >
+        <div class="col-md-10 mt-3">
+            <mat-card>
+                <mat-card-content>
+                    <div class="d-flex justify-content-between mt-2 ms-2">
+                        <div class="d-flex ">
+                            <div>
+                                <mat-progress-spinner [matTooltip]="'Cash Bonus: '+userDetails.balance" class="example-margin" mode="determinate" [value]="value"></mat-progress-spinner>
+                                <div class="ruppe" style="position:relative; top: -60px; left: 43px;">₹</div>
+                            </div>
+                            <div class="ms-3 mt-3">
+                                <div class="balance">Total Balance</div>
+                                <div class="balanceAmt mt-2 mb-2">₹{{userDetails.balance}}</div>
+                                <a [routerLink]="'/wallet/my-transactions'" class="anchor"><img src="https://www.myteam11.com/fantasy-sports/assets/images/nc_stetment.svg" class="img stateimg" alt=""> View Statement</a>
+                            </div>
+                        </div>
+                        <div>
+                            <button mat-raised-button class="mt-4 ms-3" color="primary" (click)="onAddCash()">+ Add Cash</button>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>              
+        </div>
+        <div class="col-md-10 mt-3">
+
+                    <div class="d-flex justify-content-between">
+                        <mat-card class="matCard">
+                            <mat-card-content>
+                                <div>
+                                    <div class="amt">Winning</div>    
+                                    <div class="para">₹{{userDetails.winningamount}}</div>              
+                                </div>
+                            </mat-card-content>
+                          </mat-card>
+                          <mat-card class="matCard">
+                            <mat-card-content>
+                                <div>
+                                    <div class="amt">Amount Added</div>    
+                                    <div class="para">₹{{userDetails.addcashamount}}</div>              
+                                </div>
+                            </mat-card-content>
+                          </mat-card>
+                          <mat-card class="matCard">
+                            <mat-card-content>
+                                <div>
+                                    <div class="amt">Credit Bonus</div>    
+                                    <div class="para">₹{{userDetails.bonusamount}}</div>              
+                                </div>
+                            </mat-card-content>
+                          </mat-card>
+                    </div>
+        </div>
+        <div class="col-md-10 mt-3">
+            <mat-card style="cursor: pointer;" [routerLink]="'/wallet/scratch-card'">
+                <mat-card-content>
+                    <div class="d-flex">
+                        <div class=" me-2"><mat-icon class="size">card_giftcard</mat-icon></div>
+                        <div class="mt-2 ms-2">
+                            <div class="heading">Scratch Card</div>
+                            <div class="subHeading">Check your scratched reward here</div>
+                        </div>
+                        <!-- <div><mat-icon>navigate_next</mat-icon></div> -->
+                    </div>
+                </mat-card-content>
+              </mat-card>             
+        </div>
+        <div class="col-md-10 mt-3">
+            <mat-card style="cursor: pointer;">
+                <mat-card-content>
+                    <div class="d-flex">
+                        <div class=" me-2"><mat-icon class="size">local_activity</mat-icon></div>
+                        <div class="mt-2 ms-2">
+                            <div class="heading">Golden Ticket</div>
+                            <div class="subHeading">Your tickets to exclusive discounts & entries</div>
+                        </div>
+                    </div>
+                </mat-card-content>
+              </mat-card>              
+        </div>
+        <div class="col-md-10 mt-3">
+            <mat-card style="cursor: pointer;">
+                <mat-card-content>
+                    <div class="d-flex">
+                        <div class=" me-2"><mat-icon class="size">account_balance</mat-icon></div>
+                        <div class="mt-2 ms-2">
+                            <div class="heading">Widhraw Money</div>
+                            <div class="subHeading">Verify your account first</div>
+                            <div class="mt-3"><a [routerLink]="'/profile/verify-account'" style="text-decoration: none; color: red;">To withdraw winning amount please verify your account first.</a></div>
+                        </div>
+                    </div>
+                </mat-card-content>
+              </mat-card>              
+        </div>
+        <div class="col-md-10 mt-3">
+            <mat-card style="cursor: pointer;" (click)="onCoupon()">
+                <mat-card-content>
+                    <div class="d-flex">
+                        <div class=" me-2"><mat-icon class="size">confirmation_number</mat-icon></div>
+                        <div class="mt-2 ms-2">
+                            <div class="heading">Redeem coupon</div>
+                            <div class="subHeading">Redeem your coupon</div>
+                        </div>
+                    </div>
+                </mat-card-content>
+              </mat-card>              
+        </div>
+    </div>
+</div>
+
+
+<nav class="navbar fixed-bottom bg-light">
+    <div class="container-fluid justify-content-between">
+        <mat-card class="matCard-footer">
+            <mat-card-content>
+                <mat-icon class="footer" [routerLink]="'/home'">home</mat-icon>
+            </mat-card-content>
+        </mat-card>          
+        <mat-card class="matCard-footer">
+          <mat-card-content>
+                <mat-icon class="footer" [routerLink]="'/joined-contest'">local_activity</mat-icon>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="matCard-footer">
+            <mat-card-content>
+                <mat-icon class="footer" [routerLink]="'/wallet'">account_balance_wallet</mat-icon>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class="matCard-footer">
+            <mat-card-content>
+                <mat-icon class="footer">more_vert</mat-icon>
+            </mat-card-content>
+        </mat-card>
+    </div>
+  </nav>
+
+  <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "timer" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>

@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg bg-primary">
+    <div class="container-fluid">
+        <div class="d-flex">
+            <mat-icon class="icon" [routerLink]="'/wallet'" >arrow_back</mat-icon>
+            <div class="navbar-brand ms-3"  [style.color]="'white'">Recent Transactions</div>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <!-- <div class="m-2 date">{{date | date:'d-MMM-y'}}</div> -->
+            <mat-card *ngFor="let d of transactions; let i = index" class="m-3">
+                <!-- <div class="m-2 date">{{setDate[i] | date:'d-MMM-y'}}</div> -->
+                <div class="m-2 date">{{d.date_time | date:'d-MMM-y'}}</div>
+                <mat-card-content>
+                    <mat-accordion class="example-headers-align" multi>
+
+                        <mat-expansion-panel>
+
+                          <mat-expansion-panel-header>
+                            <mat-panel-title>
+                              {{d.type}}
+                            </mat-panel-title>
+                            <mat-panel-description>
+                              &nbsp;
+                              <div [ngStyle]="{'color':d.type == 'Contest Joining Fee'? 'red':d.type == 'Add Fund Adjustments'? '#9bcc59':'#9bcc59'}">₹{{d.amount}}</div>
+                            </mat-panel-description>
+                          </mat-expansion-panel-header>
+                          
+                          <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <td>{{d.date_time | date:'h:mm a'}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Trans. ID:</th>
+                                    <td>{{d.txnid}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Status</th>
+                                    <td *ngIf="d.success==true">SUCCESS</td>
+                                    <td *ngIf="d.success==false">FAILED</td>
+                                </tr>
+                            </thead>
+                          </table>
+                                            
+                        </mat-expansion-panel>
+                    
+                      </mat-accordion>
+                </mat-card-content>
+              </mat-card>
+        </div>
+    </div>
+</div>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "timer" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>

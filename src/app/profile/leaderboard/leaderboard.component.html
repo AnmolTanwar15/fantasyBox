@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg bg-primary">
+    <div class="container-fluid">
+        <div class="d-flex">
+            <mat-icon class="icon" [routerLink]="'/profile'" >arrow_back</mat-icon>
+            <div class="navbar-brand ms-3"  [style.color]="'white'">Leaderboard</div>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <mat-card>
+                <mat-card-content>
+                    <h2 style="color:#47535D" class="ms-3">Playing Experience</h2>
+                    <div class="d-flex justify-content-around">
+                        <div class="d-flex">
+                            <div><img src="	https://www.myteam11.com/fantasy-sports/assets/images/contest-win.svg" style="height: 50px;" alt=""></div>
+                            <div class="mt-2 ms-2">
+                                <div style="color: #FDB137; font-size: 17px;">{{userInfo.totalwinning}}</div>
+                                <div style="color: #A1A5A9; font-size: 15px;">Contests Win</div>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div><img src="	https://www.myteam11.com/fantasy-sports/assets/images/total-contest.svg" style="height: 50px;" alt=""></div>
+                            <div class="mt-2 ms-2">
+                                <div style="color: #0684F2; font-size: 17px;">{{userInfo.totalchallenges}}</div>
+                                <div style="color: #A1A5A9; font-size: 15px;">Total Contests</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-around mt-4">
+                        <div class="d-flex">
+                            <div><img src="	https://www.myteam11.com/fantasy-sports/assets/images/matches.svg" style="height: 50px;" alt=""></div>
+                            <div class="mt-2 ms-2">
+                                <div style="color: #F07689; font-size: 17px;">{{userInfo.totalmatches}}</div>
+                                <div style="color: #A1A5A9; font-size: 15px;">Matches &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div><img src="	https://www.myteam11.com/fantasy-sports/assets/images/series.svg" style="height: 50px;" alt=""></div>
+                            <div class="mt-2 ms-2">
+                                <div style="color: #0F9D58; font-size: 17px;">{{userInfo.totalseries}}</div>
+                                <div style="color: #A1A5A9; font-size: 15px;">Series &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+              </mat-card> 
+              
+              <mat-card class="mt-4">
+                <mat-card-content>
+                    <h2 style="color:#47535D" class="ms-3">Leaderboard</h2>
+
+                </mat-card-content>
+              </mat-card>              
+        </div>
+    </div>
+</div>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "timer" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>

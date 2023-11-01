@@ -1,0 +1,81 @@
+.bgImage{
+    background-image: url("https://www.myteam11.com/fantasy-sports/assets/images/side_bg.jpg");
+    background-size: cover;
+    min-height: 250px;
+    padding: 5px 15px 20px;
+    position: relative;
+    z-index: 1;
+    border-radius: 5px;
+}
+.bgImage::before{
+    content: "";
+    background: #1141c1;
+    background: var(--safe_color);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: .85;
+    z-index: -1;
+}
+.icon{
+    color:white;
+    font-size: 25px;
+}
+.photo{
+    position: relative;
+    top: 37px;
+    right: 23px;
+    bottom: 5px;
+    width: 32px;
+    height: 32px;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+    border-radius: 100%;
+}
+.level{
+    color: #0E449E;
+    font-weight: 550;
+}
+.list2{
+    color: #A1A5A9;
+    font-size: 20px;
+}
+.list1{
+    color: #A1A5A9;
+    font-size: 17px;
+}
+.unlock{
+    font-size: 12px;
+    color: #47535D;
+    font-weight: 600;
+}
+.verify{
+    font-size: 25px;
+    /* margin: 50px; */
+}
+.divverify{
+    box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+    padding: 10px;
+}
+.cardIcon{
+    font-size: 25px;
+    position: relative;
+    top: 15px;
+    left: 13px;
+}
+.contestCard{
+    width: 300px;
+    height: 100px;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+}
+.info{
+    font-size: 18px;
+    color: #47535D;
+    font-weight: 600;
+}
+.i{
+    position: relative;
+    left: 5px;
+    bottom: 9px;
+}

@@ -1,0 +1,13 @@
+.icon{
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+.formField{
+    width: 100%;
+}
+.des{
+    font-size: 20px;
+    font-weight: 500;
+    color: #47535D;
+}

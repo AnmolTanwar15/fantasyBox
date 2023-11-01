@@ -1,0 +1,41 @@
+.icon{
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+.div1{
+    color: #798086;
+    font-size: 16px;
+    font-weight: 400;
+}
+.button{
+    font-size: 17px;
+    height: 50px;
+    width: 90px;
+}
+.cancel{
+    font-size: 23px;
+    height: 25px;
+    width: 25px;
+}
+.iconbtn{
+    margin-top: 12px;
+}
+.cardFoot{
+    background-color: #0275d8;
+    color: white;
+}
+.AddCash1{
+    background-color:  #0275d8;
+    color: white;
+    padding-right: 278px;
+    padding-left: 278px;
+    font-size: 18px;
+}
+.AddCash2{
+    background-color:  #0275d8; 
+    color: white;
+    padding-right: 251px;
+    padding-left: 251px;
+    font-size: 18px;
+}

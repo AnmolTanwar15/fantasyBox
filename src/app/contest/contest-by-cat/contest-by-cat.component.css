@@ -1,0 +1,34 @@
+.text{
+    font-weight: bold;
+    font-size: 20px;
+}
+.button{
+    font-size: 12px;
+}
+.text2{
+    font-weight: 150;
+    font-size: 15px;
+}
+.text3{
+    font-weight: 500;
+    font-size: 15px;
+    color: rgb(208, 58, 58);
+}
+.foot{
+    background-color: #F0F0F0;
+}
+.icon{
+    font-weight: 100;
+    margin-left: 10px;
+}
+.price{
+    margin-top: 4px;
+    font-size: 16px;
+    font-weight: 400;
+    margin-right: 15px;
+}
+
+.text4{
+    font-size: 15px;
+    font-weight: 550;
+}

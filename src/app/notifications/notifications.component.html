@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg bg-primary">
+    <div class="container-fluid">
+        <div class="d-flex">
+            <!-- <mat-icon class="icon" [routerLink]="'/wallet'" >arrow_back</mat-icon> -->
+            <div class="navbar-brand ms-3"  [style.color]="'white'">Notification</div>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="mb-4 mt-2 ms-4 me4 head"  *ngIf="todayNotify!=undefined">Today`s Notification</h2>
+            <mat-card class="m-4" *ngFor="let d of todayNotify; index as i">
+              <mat-card-content>
+                  <!-- <div class="date" >{{d.created_at | date:'dd MMM yyyy'}}</div>
+                  <hr> -->
+                  <div class="msg">{{d.message}}</div>
+              </mat-card-content>
+            </mat-card>              
+            <h2 class="m-4 head">Previous Notification</h2>
+            <mat-card class="m-4" *ngFor="let d of preNotify; index as i">
+                <mat-card-content>
+                    <div class="date" >{{d.created_at | date:'dd MMM yyyy'}}</div>
+                    <hr>
+                    <div class="msg">{{d.message}}</div>
+                </mat-card-content>
+              </mat-card> 
+        </div>
+    </div>
+</div>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "timer" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>

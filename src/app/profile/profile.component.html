@@ -1,0 +1,174 @@
+    <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <mat-card class="mt-4 mb-3">
+                <mat-card-header class="bgImage">
+                    <div style="width: 100%;">
+                        <div class="d-flex justify-content-between mt-2">
+                            <div><mat-icon class="icon" style="cursor: pointer;" [routerLink]="'/home'">arrow_back</mat-icon></div>
+                            <div><mat-icon class="icon" style="cursor: pointer;" [routerLink]="'/profile/edit-profile'">edit</mat-icon></div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <img src={{userInfo.image}} class="img-fluid ms-4" alt="" style="border-radius: 50px; height: 120px; width: 120px;">
+                            <!-- <form action=""> -->
+                                <input type="file" #fileInput style="display: none;" accept="image/png, image/gif, image/jpeg" (change)="onFile($event)">
+                                <button class="photo" mat-mini-fab color="primary" (click)="fileInput.click()"><mat-icon>add_a_photo</mat-icon></button>
+                            <!-- </form> -->
+                        </div>
+                        <div class="mt-4">
+                            <h2 class="text-center" style="color: white;">{{userInfo.team}}</h2>
+                        </div>
+                    </div>
+                </mat-card-header>                     
+                <mat-card-content>
+                <mat-card>
+                    <mat-card-content class="p-3">
+                        <mat-card>
+                            <mat-card-content>
+                                <div class="d-flex">
+                                    <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+                                    <div class="i"><mat-icon>info</mat-icon></div>
+                                </div>
+                                <div class="d-flex justify-content-between mt-1">
+                                    <div class="level">Level 3</div>
+                                    <div class="level">Level 4</div>
+                                </div>
+                                <div>
+                                    <div class="list2 mt-3">Complete the following tasks.</div>
+                                    <div class="mt-2">
+                                        <ul class="list1">
+                                            <li class="mb-2">Play 1 different leagues to LEVEL-UP!</li>
+                                            <li>Join paid league worth ₹4.00 more to Level up</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="unlock mb-1">UNLOCK ON LEVEL 5</div>
+                                <li>₹ 5.00 Credit Bonus</li>
+                            </mat-card-content>
+                          </mat-card> 
+                          <div style="color: #C3C6C8; font-size: 22px; padding: 20px; font-weight: 550;">Profile Verification</div>
+                          <mat-card>
+                            <mat-card-content>
+                                <div class="d-flex justify-content-center divverify flex-wrap">
+                                    <div>
+                                        <div matBadgeColor="warn" [matBadge]="userInfo.mobile !=null ? '✓':'!'" matBadgeOverlap="true" matBadgePosition="before" class="demo-section"></div>
+                                        <button mat-fab class="me-4" color="primary" [disabled]="userInfo.mobile==null"><mat-icon class="verify">phone_iphone</mat-icon></button>
+                                        <mat-icon>navigate_next</mat-icon> 
+                                        <h3>&nbsp;Mobile</h3>
+                                    </div>
+                                    <div class="ms-4">
+                                        <div matBadgeColor="warn" [matBadge]="userInfo.email !=null ? '✓':'!'" matBadgeOverlap="true" matBadgePosition="before" class="demo-section"></div>
+                                        <button mat-fab class="me-4" color="primary"  [disabled]="userInfo.email==null"><mat-icon class="verify">email</mat-icon></button><mat-icon>navigate_next</mat-icon>
+                                        <h3>&nbsp;&nbsp;Email</h3>
+                                    </div>
+                                    <div  class="ms-4">
+                                        <button mat-fab class="me-4" color="primary" [disabled]="userInfo.verified==0 || userInfo.verified==null"><mat-icon class="verify">credit_card</mat-icon></button><mat-icon>navigate_next</mat-icon>
+                                        <h3>&nbsp;&nbsp;&nbsp;PAN</h3>
+                                    </div>
+                                    <div class="ms-4">
+                                        <button mat-fab class="me-4 " color="primary" [disabled]="userInfo.verified==0 || userInfo.verified==null"><mat-icon class="verify">account_balance</mat-icon></button><mat-icon>navigate_next</mat-icon>
+                                        <h3 class="ms-2">Bank</h3>
+                                    </div>
+                                    <div>
+                                        <button mat-fab class="ms-4" color="primary" [disabled]="userInfo.verified==0 || userInfo.verified==null"><mat-icon class="verify">place</mat-icon></button>
+                                        <h3 class="ms-4">Address</h3>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-evenly mt-3">
+                                    <div class="list1 mt-2">Verify your Details Now to Enjoy Seamless Withdrawals</div>
+                                    <div><button mat-raised-button color="primary" [routerLink]="'/profile/verify-account'">Verify account</button></div>
+                                </div>
+                            </mat-card-content>
+                          </mat-card>   
+                          <div style="color: #C3C6C8; font-size: 22px; padding: 20px; font-weight: 550;">Playing Experience</div>      
+                          <div class="d-flex justify-content-evenly flex-wrap">
+                            <div>
+                                <mat-card class="contestCard">
+                                    <mat-card-content>
+                                        <div class="d-flex mt-2">
+                                            <div style="box-shadow: 0 3px 6px rgb(0 0 0 / 16%);border-radius: 100%; height: 50px; width: 50px;"><mat-icon class="cardIcon text-center">emoji_events</mat-icon></div>
+                                            <div class="ms-2 mt-2">
+                                                <div class="list1">{{userInfo.totalwinning}}</div>
+                                                <div class="list1">Contests Win</div>
+                                            </div>
+                                        </div>
+                                    </mat-card-content>
+                                  </mat-card> 
+                            </div>
+                            <div><mat-card class="contestCard">
+                                <mat-card-content>
+                                    <div class="d-flex mt-2">
+                                        <div style="box-shadow: 0 3px 6px rgb(0 0 0 / 16%);border-radius: 100%; height: 50px; width: 50px;"><mat-icon class="cardIcon text-center">local_activity</mat-icon></div>
+                                        <div class="ms-2 mt-2">
+                                            <div class="list1">{{userInfo.totalchallenges}}</div>
+                                            <div class="list1">Total Contests</div>
+                                        </div>
+                                    </div>
+                                </mat-card-content>
+                              </mat-card> </div>
+                            </div>
+                          <div class="d-flex justify-content-evenly mt-3 flex-wrap">
+                            <div>
+                                <mat-card class="contestCard">
+                                    <mat-card-content>
+                                        <div class="d-flex mt-2">
+                                            <div style="box-shadow: 0 3px 6px rgb(0 0 0 / 16%);border-radius: 100%; height: 50px; width: 50px;"><mat-icon class="cardIcon text-center">confirmation_number</mat-icon></div>
+                                            <div class="ms-2 mt-2">
+                                                <div class="list1">{{userInfo.totalmatches}}</div>
+                                                <div class="list1">Matches</div>
+                                            </div>
+                                        </div>
+                                    </mat-card-content>
+                                  </mat-card> 
+                            </div>
+                            <div>
+                                <mat-card class="contestCard">
+                                    <mat-card-content>
+                                        <div class="d-flex mt-2">
+                                            <div style="box-shadow: 0 3px 6px rgb(0 0 0 / 16%);border-radius: 100%; height: 50px; width: 50px;"><mat-icon class="cardIcon text-center">sports_score</mat-icon></div>
+                                            <div class="ms-2 mt-2">
+                                                <div class="list1">{{userInfo.totalseries}}</div>
+                                                <div class="list1">Series</div>
+                                            </div>
+                                        </div>
+                                    </mat-card-content>
+                                </mat-card> 
+                            </div>
+                        </div>   
+                          <div class="text-center mt-4">
+                            <button mat-raised-button color="warn" [routerLink]="'/profile/leaderboard'">Leaderboard ></button>
+                        </div> 
+                        <div>
+                            <div style="color: #C3C6C8; font-size: 22px; padding: 20px; font-weight: 550;">Profile Info</div>
+                            <div class="d-flex justify-content-around mt-3">
+                                <table class="table">
+                                    <tr><td  class="list1 text-center">Your Name</td></tr>
+                                    <tr><td  class="info text-center">{{userInfo.username}}</td></tr>
+                                </table>
+                                <table class="table">
+                                    <tr><td  class="list1 text-center">Email Address</td></tr>
+                                    <tr><td  class="info text-center">{{userInfo.email}}</td></tr>
+                                </table>
+                            </div>
+                            <div class="d-flex justify-content-around mt-3">
+                                <table class="table">
+                                    <tr><td  class="list1 text-center">Team Name</td></tr>
+                                    <tr><td  class="info text-center">{{userInfo.team}}</td></tr>
+                                </table>
+                                <table class="table">
+                                    <tr><td  class="list1 text-center">Phone Number</td></tr>
+                                    <tr><td  class="info text-center">{{userInfo.mobile}}</td></tr>
+                                </table>
+                            </div>
+                          </div>   
+                          <div class="text-center mt-4"><button mat-raised-button color="primary"><mat-icon>logout</mat-icon>Logout</button></div>                                   
+                        </mat-card-content>
+                  </mat-card> 
+                </mat-card-content>
+              </mat-card>              
+        </div>
+    </div>
+</div>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "timer" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>

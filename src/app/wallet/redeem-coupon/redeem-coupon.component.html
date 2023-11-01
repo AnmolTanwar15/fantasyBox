@@ -1,0 +1,15 @@
+<div class="container" style="height:250px;">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 align="center" class="mt-2">Redeem Coupon Code</h2>
+            <form action="" [formGroup]="redeem">
+                <input type="text" class="no-outline mt-3" placeholder="Enter Reedem Code" formControlName="inp">
+                <div [style.Color]="'red'" *ngIf="f['inp'].touched && f['inp'].errors?.['required']">&nbsp;*Code is required</div>
+            </form>
+            <div class="d-flex mt-3 justify-content-center">
+                <div><button mat-raised-button (click)="onCancel()">CANCEL</button></div>
+                <div><button mat-raised-button color="primary" class="ms-3" (click)="onSubmit()">CONTINUE</button></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,216 @@
+<nav class="navbar bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" [routerLink]="'/home'" [style.color]="'white'">Navbar</a>
+      <button mat-mini-fab color="primary"  type="submit" class="ms-2" (click)="onLogout()"><mat-icon>logout</mat-icon></button>
+    </div>
+  </nav>
+
+  <div class="container mt-2">
+    <div class="row justify-content-center">
+        <div class="col-md-6 ">
+            <div class="card">
+                <div class="card-body bg-light z-n1">
+                    <div class="d-flex justify-content-between">
+                        <div><img src={{img1}} class="img-fluid image" alt=""></div>
+                        <div class="me-3">
+                            <div class="text">{{team1_name}}</div>
+                            <div class="text" align="center">{{team1_player.length}}</div>
+                        </div>
+                        <div>
+                            <div class="text2">Players</div>
+                            <div class="text" align="center">{{total_players.length}}/11</div>
+                        </div>
+                        <div>
+                            <div class="text2">Credit Limit</div>
+                            <div class="text" align="center">{{creditLimit}}</div>
+                        </div>
+                        <div class="ms-3">
+                            <div class="text">{{team2_name}}</div>
+                            <div class="text" align="center">{{team2_player.length}}</div>
+                        </div>
+                        <div><img src={{img2}} class="img-fluid image" alt=""></div> 
+                    </div>
+                    <div class="mt-3">
+                        <mat-progress-bar mode="determinate" [value]="total_players.length*9.09"></mat-progress-bar>                   
+                    </div>
+                    <div class="d-flex justify-content-between mt-3">
+                        <div class="text mt-2">Minimum 7 players are allowed from one team</div>
+                        <div><button mat-raised-button (click)="onReset()">RESET</button></div>
+                    </div>
+                    <div class="mt-3">
+                        <mat-tab-group animationDuration="0ms" class="scroll">
+                            <mat-tab label="WK({{wk.length}})">
+                                <div align="center" class="mt-2 role">PICK 1-4 WICKET-KEEPER</div>
+                                <table class="table mt-2">
+                                    <thead class="table-secondary">
+                                        <tr>
+                                            <th>Team</th>
+                                            <th>Player</th>
+                                            <th>S.By</th>
+                                            <th>PTS</th>
+                                            <th>CR</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody  style="cursor: pointer;">
+                                        <tr *ngFor="let d of keeper; index as i" (click)="onPlayer(d.playerkey)" [ngStyle]="{'background-color' : d.isSelected ? 'LightBlue' : '#F8F9FA'}">
+                                            <td><small><span mat-raised-button class="MEGA">{{d.teamname}}</span></small>
+                                                <img src={{d.image}} class="img-fluid image2" alt=""></td>
+                                                <td class="text">{{d.name}}
+                                                    <li *ngIf="d.playingstatus==0" class="avail">Not Available</li>
+                                                    <li *ngIf="d.playingstatus==1" class="avail">Available</li>
+                                                    <li *ngIf="d.playingstatus==-1" class="avail">In Last Playing</li>
+                                                </td>
+                                                <td>{{d.player_selection_percentage}}%</td>
+                                                <td>{{d.points}}</td>
+                                                <td>{{d.credit}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </mat-tab>
+                            <mat-tab label="BAT({{bat.length}})">
+                                <div align="center" class="mt-2 role">PICK 2-6 BATSMAN</div>
+                                <table class="table mt-2">
+                                    <thead class="table-secondary">
+                                        <tr>
+                                            <th>Team</th>
+                                            <th>Player</th>
+                                            <th>S.By</th>
+                                            <th>PTS</th>
+                                            <th>CR</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody  style="cursor: pointer;">
+                                        <tr  *ngFor="let d of bats; index as i" (click)="onPlayer(d.playerkey)" [ngStyle]="{'background-color' : d.isSelected ? 'LightBlue' : '#F8F9FA'}">
+                                            <td><small><span mat-raised-button class="MEGA">{{d.teamname}}</span></small>
+                                                <img src={{d.image}} class="img-fluid image2" alt=""></td>
+                                                <td class="text">{{d.name}}
+                                                    <li *ngIf="d.playingstatus==0" class="avail">Not Available</li>
+                                                    <li *ngIf="d.playingstatus==1" class="avail">Available</li>
+                                                    <li *ngIf="d.playingstatus==-1" class="avail">In Last Playing</li>
+                                                </td>
+                                                <td>{{d.player_selection_percentage}}%</td>
+                                                <td>{{d.points}}</td>
+                                                <td>{{d.credit}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </mat-tab>
+                            <mat-tab label="AR({{ar.length}})">
+                                <div align="center" class="mt-2 role">PICK 1-6 ALL-ROUNDER</div>
+                                <table class="table mt-2">
+                                    <thead class="table-secondary">
+                                        <tr>
+                                            <th>Team</th>
+                                            <th>Player</th>
+                                            <th>S.By</th>
+                                            <th>PTS</th>
+                                            <th>CR</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody style="cursor: pointer;">
+                                        <tr  *ngFor="let d of allRound; index as i" (click)="onPlayer(d.playerkey)" [ngStyle]="{'background-color' : d.isSelected ? 'LightBlue' : '#F8F9FA'}">
+                                            <td><small><span mat-raised-button class="MEGA">{{d.teamname}}</span></small>
+                                                <img src={{d.image}} class="img-fluid image2" alt=""></td>
+                                                <td class="text">{{d.name}}
+                                                    <li *ngIf="d.playingstatus==0" class="avail">Not Available</li>
+                                                    <li *ngIf="d.playingstatus==1" class="avail">Available</li>
+                                                    <li *ngIf="d.playingstatus==-1" class="avail">In Last Playing</li>
+                                                </td>
+                                                <td>{{d.player_selection_percentage}}%</td>
+                                                <td>{{d.points}}</td>
+                                                <td>{{d.credit}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </mat-tab>
+                            <mat-tab label="BOW({{bow.length}})">
+                                <div align="center" class="mt-2 role">PICK 2-6 BOWLER</div>
+                                <table class="table mt-2">
+                                    <thead class="table-secondary">
+                                        <tr>
+                                            <th>Team</th>
+                                            <th>Player</th>
+                                            <th>S.By</th>
+                                            <th>PTS</th>
+                                            <th>CR</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody style="cursor: pointer;">
+                                        <!-- <div> -->
+                                            <tr *ngFor="let d of bowler; index as i" (click)="onPlayer(d.playerkey)" [ngStyle]="{'background-color' : d.isSelected ? 'LightBlue' : '#F8F9FA'}">
+                                                <td><small><span mat-raised-button class="MEGA">{{d.teamname}}</span></small>
+                                                    <img src={{d.image}} class="img-fluid image2" alt=""></td>
+                                                    <td class="text">{{d.name}}
+                                                        <li *ngIf="d.playingstatus==0" class="avail">Not Available</li>
+                                                        <li *ngIf="d.playingstatus==1" class="avail">Available</li>
+                                                        <li *ngIf="d.playingstatus==-1" class="avail">In Last Playing</li>
+                                                    </td>
+                                                    <td>{{d.player_selection_percentage}}%</td>
+                                                    <td>{{d.points}}</td>
+                                                    <td>{{d.credit}}</td>
+                                                </tr>
+                                            <!-- </div> -->
+                                    </tbody>
+                                </table>
+                            </mat-tab>
+                        </mat-tab-group>
+                    </div>
+                </div>
+                <div style="margin:auto;position: sticky;bottom: 0;z-index: 1;">
+                    <button mat-raised-button color="primary" class="mb-1" *ngIf="teamNumber2 == null" [disabled]="total_players.length!=11" (click)="selectetPlayer()">VIEW TEAM</button>
+                    <button mat-raised-button color="primary" class="mb-1" *ngIf="teamNumber2 != null" [disabled]="total_players.length!=11" (click)="editPlayer()">EDIT TEAM</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card cardImg cardSide scroll2">
+                <div class="card-body">
+                    <div class="">
+                        <div class="divHeight">                            
+                            <h4 align="center" class="text5 mt-2">Wicket Keeper</h4>
+                            <div class="d-flex justify-content-around flex-wrap">
+                                <div *ngFor="let d of wk">
+                                    <img src={{d.image}} class="img-fluid image3 rounded-circle" alt="">
+                                    <p class="pName" [ngClass]="{'black': d.team =='team1', 'white': d.team =='team2'}">{{d.name}}</p>
+                                    <p align="center" class="cName">{{d.credit}} Cr</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="divHeight">
+                            <h4 align="center" class="text5">Batter</h4>
+                            <div class="d-flex justify-content-around flex-wrap">
+                                <div *ngFor="let d of bat">
+                                    <img src={{d.image}} class="img-fluid image3 rounded-circle" alt="">
+                                    <p class="pName" [ngClass]="{'black': d.team =='team1', 'white': d.team =='team2'}">{{d.name}}</p>
+                                    <p align="center" class="cName">{{d.credit}} Cr</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="divHeight">
+                            <h4 align="center" class="text5 mt-2">All Rounder</h4>
+                            <div class="d-flex justify-content-around flex-wrap">
+                                <div *ngFor="let d of ar">
+                                    <img src={{d.image}} class="img-fluid image3 rounded-circle" alt="">
+                                    <p class="pName" [ngClass]="{'black': d.team =='team1', 'white': d.team =='team2'}">{{d.name}}</p>
+                                    <p align="center" class="cName">{{d.credit}} Cr</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="divHeight">
+                            <h4 align="center" class="text5 mt-2">Bowler</h4>
+                            <div class="d-flex justify-content-around flex-wrap">
+                                <div *ngFor="let d of bow">
+                                    <img src={{d.image}} class="img-fluid image3 rounded-circle" alt="">
+                                    <p class="pName" [ngClass]="{'black': d.team =='team1', 'white': d.team =='team2'}">{{d.name}}</p>
+                                    <p align="center" class="cName">{{d.credit}} Cr</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+        </div>
+    </div>
+  </div>
+  <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "timer" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>

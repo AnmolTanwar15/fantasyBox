@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body {
+        margin: 0; 
+        font-family: Roboto, "Helvetica Neue", sans-serif; 
+        /* background-image: url("https://www.myteam11.com/fantasy-sports/assets/images/side_bg.jpg");
+        background-position: center center;
+        background-size: cover;
+        background-attachment: fixed;
+        width: 100%;
+        z-index: 1;
+        overflow: auto;
+        position: relative; */
+    }
+

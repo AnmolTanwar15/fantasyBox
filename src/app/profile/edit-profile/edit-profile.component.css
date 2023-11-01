@@ -1,0 +1,20 @@
+.icon{
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+.formField{
+    width: 100%;
+}
+#gender{
+    font-size: 20px;
+    font-weight: 500;
+    padding: 8px;
+}
+.readonly-wrapper {
+    cursor: not-allowed;
+}
+
+.readonly-wrapper .readonly-block {
+    pointer-events: none;
+}

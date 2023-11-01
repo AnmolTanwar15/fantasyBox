@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand-lg bg-primary">
+    <div class="container-fluid">
+        <div class="d-flex">
+            <!-- <mat-icon class="icon" [routerLink]="'/profile'" >arrow_back</mat-icon> -->
+            <div class="navbar-brand ms-3"  [style.color]="'white'">Verify Account</div>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-3 mb-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <mat-card>
+                <mat-card-content>
+                    <form action="" [formGroup]="verify">
+                        <mat-card>
+                            <mat-card-content>
+                                <mat-form-field appearance="outline" floatLabel="always" class="formField">
+                                    <mat-label>Email</mat-label>
+                                    <input type="email" matInput placeholder="Enter Email" readonly formControlName="email" style="font-weight: 500; font-size: 20px;">
+                                    <img src="	https://www.myteam11.com/fantasy-sports/assets/images/ic_done_new.svg" *ngIf="userInfo.email!=null" matSuffix style="height: 45px;">
+                                    <mat-error *ngIf="f['email'].touched && f['email'].errors?.['required']">*Email is Required</mat-error>
+                                </mat-form-field>
+                                <mat-hint class="ms-2" style="font-size: 13px;">We send you a verification email to verify your email address.</mat-hint>
+                            </mat-card-content>
+                          </mat-card>  
+                          <mat-card class="mt-3">
+                            <mat-card-content>
+                                <mat-form-field appearance="outline" class="formField">
+                                    <mat-label>Mobile</mat-label>
+                                    <input type="text" matInput readonly formControlName="mob">
+                                    <img src="	https://www.myteam11.com/fantasy-sports/assets/images/ic_done_new.svg" *ngIf="userInfo.mobile!=null" matSuffix style="height: 45px;">
+                                </mat-form-field>
+                            </mat-card-content>
+                          </mat-card> 
+                          <mat-card class="mt-3">
+                            <mat-card-content>
+                                <mat-form-field appearance="outline" floatLabel="always" class="formField">
+                                    <mat-label>Address Proof</mat-label>
+                                    <input type="text" matInput readonly placeholder=" --" style="font-size: 25px; font-weight: 900;">
+                                    <button mat-raised-button matSuffix color="primary" class="me-2" style="width: 20px; height: 30px;">VERIFY</button>
+                                </mat-form-field>
+                            </mat-card-content>
+                          </mat-card> 
+                          <mat-card class="mt-3">
+                            <mat-card-content>
+                                <mat-form-field appearance="outline" floatLabel="always" class="formField">
+                                    <mat-label>PAN</mat-label>
+                                    <input type="text" matInput readonly placeholder=" --" style="font-size: 25px; font-weight: 900;">
+                                    <button mat-raised-button matSuffix color="primary" class="me-2" style="width: 20px; height: 30px;">VERIFY</button>
+                                </mat-form-field>
+                            </mat-card-content>
+                          </mat-card>   
+                          <mat-card class="mt-3">
+                            <mat-card-content>
+                                <mat-form-field appearance="outline" floatLabel="always" class="formField">
+                                    <mat-label>Bank</mat-label>
+                                    <input type="text" matInput readonly placeholder=" --" style="font-size: 25px; font-weight: 900;">
+                                    <button mat-raised-button matSuffix color="primary" class="me-2" style="width: 20px; height: 30px;">VERIFY</button>
+                                </mat-form-field>
+                            </mat-card-content>
+                          </mat-card>                        
+                    </form>
+
+                    <div class="row justify-content-center mt-4">
+                        <div class="col-md-7">
+                            <div class="d-flex">
+                                <div><img src="https://www.myteam11.com/fantasy-sports/assets/images/robot.png" style="height: 140px;" alt=""></div>
+                                <div class="ms-3 mt-4">
+                                    <div class="des">Do you have any doubts? check our account verify guideline.</div>
+                                    <div class="mt-3"><button mat-raised-button>How To Verify</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+              </mat-card>              
+        </div>
+    </div>
+</div>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "timer" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>

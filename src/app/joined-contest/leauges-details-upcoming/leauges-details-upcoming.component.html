@@ -1,0 +1,141 @@
+<nav class="navbar bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" [routerLink]="'/home'" [style.color]="'white'">Navbar</a>
+      <button mat-mini-fab color="primary"  type="submit" class="ms-2" (click)="onLogout()"><mat-icon>logout</mat-icon></button>
+    </div>
+  </nav>
+
+  <div class="container mt-3">
+    <div class="row justify-content-evenly">
+      <div class="col-md-6" *ngFor="let d of leagueDetails">
+        <mat-card class="pointer" (click)="onViewTeam(d.jointeams[0].teamid)">
+          <mat-card-content>
+            <div class="d-flex justify-content-between">
+              <div class="text4">Prize Pool</div>
+              <div class="text4">Spots</div>
+              <div class="text4">Entry</div>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between">
+              <div class="text">₹{{d.win_amount}}</div>
+              <div class="text ms-3">{{d.maximum_user}}</div>
+              <div class="text ">₹{{d.entryfee}}</div>
+          </div>
+          <div class="mt-4"><button mat-raised-button color="accent" class="button" style="width:100%;display:block;" (click)="onJoin()" onclick="event.stopPropagation()">Invite</button></div>
+          <hr>
+      </mat-card-content>
+            <mat-card-footer class="mt-2 mb-2">
+                <div class="d-flex justify-content-between">
+                    <div class="text4 ms-4">
+                      T{{d.jointeams[0].teamnumber}}
+                    </div>
+                    <div class="">
+
+                    </div>
+                    <div>
+
+                    </div>
+                </div>
+            </mat-card-footer>
+        </mat-card>
+                     <div class="d-flex p-3">
+                        <div style="color: green;">When the match starts, earn</div>
+                        <div style="color: green;" class="ms-1"><mat-icon>generating_tokens</mat-icon></div>
+                        <div style="color: green; font-weight: 600;">1 for every ₹10 you`ve paid</div>
+                    </div>
+
+                    <mat-card class="">
+                        <mat-card-content>
+                            <mat-tab-group>
+                                <mat-tab label="Winnings">
+                                    <table class="table mt-2">
+                                        <thead>
+                                            <tr>
+                                                <td>Ranks</td>
+                                                <td class="text-end">Winnings</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>{{price.winners}}</th>
+                                                <th class="text-end">₹{{price.total}}</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </mat-tab>
+                                <mat-tab label="Leaderboard">
+                                    <hr>
+                                    <div>
+                                        <table style="width:100%">
+                                            <thead>
+                                                <tr *ngFor="let d of leaderBoard; index as i">
+                                                    <td class="text-start" style="width:5%; font-weight: 600">{{d.rank}}</td>
+                                                    <td style="width:10%"><img src={{d.image}} class="img-fluid image mb-2" alt=""></td>
+                                                    <th class="text-start">{{d.team}}</th>
+                                                    <td class="text-end" *ngIf="d.team == userInfo.team"><button mat-raised-button color="primary" (click)="onSwitchTeam()">Switch Team</button></td>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </mat-tab>
+                              </mat-tab-group>
+                        </mat-card-content>
+                      </mat-card>
+      </div>
+      <div class="col-md-6" *ngIf="showGrass">
+        <div class="card cardImg cardSide scroll2 ">
+            <div class="card-body">
+                <div class="">
+                    <div class="text-end"><mat-icon style="cursor: pointer;" (click)="onEdit()">edit</mat-icon></div>
+                    <div class="divHeight">                            
+                        <h4 align="center" class="text5">Wicket Keeper</h4>
+                        <div class="d-flex justify-content-around flex-wrap">
+                            <div *ngFor="let d of keeper;index as i">
+                                <div [matBadge]="d.captain == 1 ? 'C'  :d.vicecaptain == 1 ? 'VC':''" matBadgeOverlap="true" matBadgePosition="before" class="demo-section"></div>
+                                <img src={{d.image}} class="img-fluid image3 rounded-circle" alt="">
+                                <p class="pName" [ngClass]="{'black': d.team =='team1', 'white': d.team =='team2'}">{{d.name}}</p>
+                                <p align="center" class="cName">{{d.credit}} Cr</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divHeight">
+                        <h4 align="center" class="text5">Batter</h4>
+                        <div class="d-flex justify-content-around flex-wrap">
+                            <div *ngFor="let d of batsman;index as i">
+                                <div [matBadge]="d.captain == 1 ? 'C'  :d.vicecaptain == 1 ? 'VC':''" matBadgeOverlap="true" matBadgePosition="before" class="demo-section"></div>
+                                <img src={{d.image}} class="img-fluid image3 rounded-circle" alt="">
+                                <p class="pName" [ngClass]="{'black': d.team =='team1', 'white': d.team =='team2'}">{{d.name}}</p>
+                                <p align="center" class="cName">{{d.credit}} Cr</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divHeight">
+                        <h4 align="center" class="text5 mt-2">All Rounder</h4>
+                        <div class="d-flex justify-content-around flex-wrap">
+                            <div *ngFor="let d of allrounder;index as i">
+                                <div [matBadge]="d.captain == 1 ? 'C'  :d.vicecaptain == 1 ? 'VC':''" matBadgeOverlap="true" matBadgePosition="before" class="demo-section"></div>
+                                <img src={{d.image}} class="img-fluid image3 rounded-circle" alt="">
+                                <p class="pName" [ngClass]="{'black': d.team =='team1', 'white': d.team =='team2'}">{{d.name}}</p>
+                                <p align="center" class="cName">{{d.credit}} Cr</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divHeight">
+                        <h4 align="center" class="text5 mt-2">Bowler</h4>
+                        <div class="d-flex justify-content-around flex-wrap">
+                            <div *ngFor="let d of bowler;index as i">
+                                <div [matBadge]="d.captain == 1 ? 'C'  :d.vicecaptain == 1 ? 'VC':''" matBadgeOverlap="true" matBadgePosition="before" class="demo-section"></div>
+                                <img src={{d.image}} class="img-fluid image3 rounded-circle" alt="">
+                                <p class="pName" [ngClass]="{'black': d.team =='team1', 'white': d.team =='team2'}">{{d.name}}</p>
+                                <p align="center" class="cName">{{d.credit}} Cr</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+    </div>
+    </div>
+  </div>
+
+  <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "timer" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>

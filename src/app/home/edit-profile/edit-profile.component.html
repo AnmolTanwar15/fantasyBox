@@ -1,0 +1,73 @@
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="text-center">First Fill Details</h2>
+            <mat-card class="p-2">
+                <mat-card-content>
+                    <form action="" [formGroup]="editProfile">
+                        <mat-form-field class="mt-2" appearance="outline" style="width: 100%;">
+                            <mat-label>Your Team Name</mat-label>
+                            <input type="text" matInput formControlName="team" maxlength="8">
+                            <mat-error *ngIf="f['team'].touched && f['team'].errors?.['required']">*Team Name Required</mat-error>
+                            <mat-error *ngIf="f['team'].touched && f['team'].errors?.['pattern']">*Name Should contain Alphabets And Numbers</mat-error>
+                            <!-- <mat-error *ngIf="editProfile.get('team')?.invalid && (editProfile.get('team')?.dirty || editProfile.get('team')?.touched)">
+                                <mat-error *ngIf="editProfile.get('team')?.errors?.['required']">My Field is required.</mat-error>
+                                <mat-error *ngIf="editProfile.get('team')?.errors?.['pattern']">My Field must contain only alphabets and numbers.</mat-error>
+                              </mat-error> -->
+                        </mat-form-field>
+                        <mat-form-field class="mt-2" appearance="outline" style="width: 100%;">
+                            <mat-label>Your Date Of Birth</mat-label>
+                            <input matInput [matDatepicker]="picker" readonly formControlName="dob" [max]="maxDate">
+                            <mat-hint>MM/DD/YYYY</mat-hint>
+                            <mat-error *ngIf="f['dob'].touched && f['dob'].errors?.['required']">*Date Of Birth Required</mat-error>
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                        <mat-form-field class="mt-3" appearance="outline" style="width: 100%;">
+                            <mat-label>Select State</mat-label>
+                            <mat-select  formControlName="state">
+                                <mat-option _ngcontent-c11="" disabled>select</mat-option>
+                                <mat-option _ngcontent-c11="" value="PONDICHERRY">PONDICHERRY</mat-option>
+                                <mat-option _ngcontent-c11="" value="BIHAR">BIHAR</mat-option>
+                                <mat-option _ngcontent-c11="" value="CHHATTISGARH">CHHATTISGARH</mat-option>
+                                <mat-option _ngcontent-c11="" value="DELHI">DELHI</mat-option>
+                                <mat-option _ngcontent-c11="" value="GUJARAT">GUJARAT</mat-option>
+                                <mat-option _ngcontent-c11="" value="DAMAN &amp; DIU">DAMAN &amp; DIU</mat-option>
+                                <mat-option _ngcontent-c11="" value="DADRA &amp; NAGAR HAVELI">DADRA &amp; NAGAR HAVELI</mat-option>
+                                <mat-option _ngcontent-c11="" value="HARYANA">HARYANA</mat-option>
+                                <mat-option _ngcontent-c11="" value="HIMACHAL PRADESH">HIMACHAL PRADESH</mat-option>
+                                <mat-option _ngcontent-c11="" value="JAMMU &amp; KASHMIR">JAMMU &amp; KASHMIR</mat-option>
+                                <mat-option _ngcontent-c11="" value="JHARKHAND">JHARKHAND</mat-option>
+                                <mat-option _ngcontent-c11="" value="KARNATAKA">KARNATAKA</mat-option>
+                                <mat-option _ngcontent-c11="" value="KERALA">KERALA</mat-option>
+                                <mat-option _ngcontent-c11="" value="LAKSHADWEEP">LAKSHADWEEP</mat-option>
+                                <mat-option _ngcontent-c11="" value="MADHYA PRADESH">MADHYA PRADESH</mat-option>
+                                <mat-option _ngcontent-c11="" value="MAHARASHTRA">MAHARASHTRA</mat-option>
+                                <mat-option _ngcontent-c11="" value="GOA">GOA</mat-option>
+                                <mat-option _ngcontent-c11="" value="MANIPUR">MANIPUR</mat-option>
+                                <mat-option _ngcontent-c11="" value="MIZORAM">MIZORAM</mat-option>
+                                <mat-option _ngcontent-c11="" value="TRIPURA">TRIPURA</mat-option>
+                                <mat-option _ngcontent-c11="" value="ARUNACHAL PRADESH">ARUNACHAL PRADESH</mat-option>
+                                <mat-option _ngcontent-c11="" value="MEGHALAYA">MEGHALAYA</mat-option>
+                                <mat-option _ngcontent-c11="" value="PUNJAB">PUNJAB</mat-option>
+                                <mat-option _ngcontent-c11="" value="CHANDIGARH">CHANDIGARH</mat-option>
+                                <mat-option _ngcontent-c11="" value="RAJASTHAN">RAJASTHAN</mat-option>
+                                <mat-option _ngcontent-c11="" value="TAMIL NADU">TAMIL NADU</mat-option>
+                                <mat-option _ngcontent-c11="" value="UTTAR PRADESH">UTTAR PRADESH</mat-option>
+                                <mat-option _ngcontent-c11="" value="UTTARAKHAND">UTTARAKHAND</mat-option>
+                                <mat-option _ngcontent-c11="" value="WEST BENGAL">WEST BENGAL</mat-option>
+                                <mat-option _ngcontent-c11="" value="ANDAMAN &amp; NICOBAR ISLANDS">ANDAMAN &amp; NICOBAR ISLANDS</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="f['state'].touched && f['state'].errors?.['required']">*State Name Required</mat-error>
+                        </mat-form-field>
+                        <div class="text-center mt-2">
+                            <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
+                        </div>
+                    </form>
+                </mat-card-content>
+              </mat-card>
+        </div>
+    </div>
+</div>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "timer" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>

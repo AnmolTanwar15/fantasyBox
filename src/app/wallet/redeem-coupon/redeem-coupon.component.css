@@ -1,0 +1,10 @@
+.no-outline{
+    border: none; 
+    color: #47535D;
+    font-size: large;
+    border-bottom: 2px solid #47535D;
+    width: 100%;
+}
+.no-outline:focus {
+    outline: none;
+}

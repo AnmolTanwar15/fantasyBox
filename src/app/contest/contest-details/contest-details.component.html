@@ -1,0 +1,99 @@
+<nav class="navbar navbar-expand-lg bg-primary">
+    <div class="container-fluid">
+        <div class="d-flex">
+            <mat-icon class="icon" (click)="onBack()" >arrow_back</mat-icon>
+            <div class="navbar-brand ms-3"  [style.color]="'white'">All Contest</div>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <mat-card class="bg-light">
+                <mat-card-content>
+                    <mat-card class="mb-3">
+                        <mat-card-content>
+                            <div class="d-flex justify-content-between">
+                                <div class="text4">Prize Pool</div>
+                                <!-- <div class="text4">Entry</div> -->
+                            </div>
+                            <div class="d-flex mt-2 justify-content-between">
+                                <div class="text mt-2">₹{{contests.win_amount}}</div>
+                            </div>
+                            <div class="mt-3" >
+                                <mat-progress-bar mode="determinate" color="warn" value={{value}}></mat-progress-bar>                    
+                            </div>
+                            <div class="d-flex justify-content-between mt-2">
+                                <div class="text3">{{contests.maximum_user - contests.joinedusers}} spots left</div>
+                                <div class="text2">{{contests.maximum_user}} spots</div>
+                            </div>
+                            <div class="mt-2"><button mat-raised-button color="accent" class="button" style="width:100%;display:block;" (click)="onJoin()">₹{{contests.entryfee}}</button></div>
+                        </mat-card-content>
+                        <mat-card-footer class="foot mt-2">
+                            <div class="d-flex justify-content-between mt-2 flex-wrap">
+                                <div class="d-flex">
+                                    <mat-icon class="icon2"> military_tech </mat-icon>
+                                    <p class="price"> ₹{{price.price}}</p>
+                                    <mat-icon class="icon2">emoji_events</mat-icon>
+                                    <p class="price">{{contests.winning_percentage}}%</p>
+                                    <mat-icon class="icon2">stars</mat-icon>
+                                    <p class="price"> Upto {{contests.team_limit}}</p>
+                                </div>
+                                <div class="d-flex">
+                                    <mat-icon class="icon2">verified</mat-icon>
+                                    <p class="price">Guaranteed</p>
+                                </div>
+                            </div>
+                        </mat-card-footer>
+                    </mat-card>
+
+                    <div class="d-flex p-3">
+                        <div style="color: green;">When the match starts, earn</div>
+                        <div style="color: green;" class="ms-1"><mat-icon>generating_tokens</mat-icon></div>
+                        <div style="color: green; font-weight: 600;">1 for every ₹10 you`ve paid</div>
+                    </div>
+
+                    <mat-card class="">
+                        <mat-card-content>
+                            <mat-tab-group>
+                                <mat-tab label="Winnings">
+                                    <table class="table mt-2">
+                                        <thead>
+                                            <tr>
+                                                <td>Ranks</td>
+                                                <td class="text-end">Winnings</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>{{price.winners}}</th>
+                                                <th class="text-end">₹{{price.total}}</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </mat-tab>
+                                <mat-tab label="Leaderboard">
+                                    <hr>
+                                    <div>
+                                        <table style="width:50%">
+                                            <thead>
+                                                <tr *ngFor="let d of leaderBoard; index as i">
+                                                    <td class="text-start" style="width:15%; font-weight: 600;">{{d.rank}}</td>
+                                                    <td><img src={{d.image}} class="img-fluid image mb-2" alt=""></td>
+                                                    <th  class="text-start">{{d.team}}</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </mat-tab>
+                              </mat-tab-group>
+                        </mat-card-content>
+                      </mat-card>
+                </mat-card-content>
+              </mat-card>
+        </div>
+    </div>
+</div>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "timer" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>

@@ -1,0 +1,59 @@
+.footer{
+    font-size: 35px;
+    height: 30px ;
+    width: 40px ;
+    margin-left: 5px;
+}
+.matCard-footer:hover{
+    background-color: aqua;
+    cursor: pointer;
+}
+.size{
+    font-size: 55px;
+    height: 50px ;
+    width: 50px ;
+}
+.heading{
+    font-size: 20px;
+    font-weight: 500;
+}
+.subHeading{
+    font-size: 13px;
+}
+.matCard{
+    width: 170px;
+}
+.para{
+    font-weight: 500;
+    display: block;
+    color: #798086;
+    font-size: 16px;
+}
+.amt{
+    color: #a1a5a9;
+    font-size: 14px;
+    font-weight: 400;
+}
+.balance{
+    color: #47535d;
+    font-weight: 400;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.balanceAmt{
+    color: #2c353b;
+    font-weight: 500;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+.ruppe{
+    color: #8b8989dd;
+    font-weight:bolder;
+    font-size:30px;
+ }
+ .anchor{
+    text-decoration: none;
+ }
+ .stateimg{
+    margin-bottom: 2px;
+ }
